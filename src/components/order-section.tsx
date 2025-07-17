@@ -1,3 +1,9 @@
+import React from 'react';
+import { Card, CardBody, Button, Input, Textarea, Checkbox, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Badge } from '@heroui/react';
+import { motion } from 'framer-motion';
+import { Icon } from '@iconify/react';
+import { useOrder, OrderItem } from './order-context'; // Add this import
+
 // Order Section Component
 export const OrderSection: React.FC = () => {
   const { 
@@ -121,7 +127,7 @@ export const OrderSection: React.FC = () => {
                                   variant="light" 
                                   onPress={() => handleQuantityChange(item, -1)}
                                 >
-                                  <Icon icon="lucide:minus" size={16} />
+                                  <Icon icon="lucide:minus" className="text-base" />
                                 </Button>
                                 <span className="text-sm w-6 text-center">{item.quantity}</span>
                                 <Button 
@@ -130,7 +136,7 @@ export const OrderSection: React.FC = () => {
                                   variant="light" 
                                   onPress={() => handleQuantityChange(item, 1)}
                                 >
-                                  <Icon icon="lucide:plus" size={16} />
+                                  <Icon icon="lucide:plus" className="text-base" />
                                 </Button>
                                 <Button 
                                   size="sm" 
@@ -140,7 +146,7 @@ export const OrderSection: React.FC = () => {
                                   className="ml-auto"
                                   onPress={() => removeItem(item.id)}
                                 >
-                                  <Icon icon="lucide:trash-2" size={16} />
+                                  <Icon icon="lucide:trash-2" className="text-base" />
                                 </Button>
                               </div>
                             </div>
