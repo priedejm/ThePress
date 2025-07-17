@@ -40,7 +40,12 @@ export const Navbar: React.FC = () => {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#" aria-label="Instagram">
+          <Link 
+            href="https://www.instagram.com/thepresschs/?hl=en" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Instagram"
+          >
             <Icon icon="lucide:instagram" className="text-foreground text-xl" />
           </Link>
         </NavbarItem>
