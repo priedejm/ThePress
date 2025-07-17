@@ -78,7 +78,7 @@ export const InstagramFeed: React.FC = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Follow Our Journey</h2>
         <div className="flex items-center justify-center gap-2 mb-4">
           <Icon icon="lucide:instagram" className="text-2xl text-foreground" />
-          <p className="text-lg font-medium">@ThePressEatery</p>
+          <p className="text-lg font-medium">@thepresschs</p>
         </div>
         <p className="text-foreground-500 max-w-2xl mx-auto">
           Follow us on Instagram for mouthwatering photos, behind-the-scenes content, and special announcements.
