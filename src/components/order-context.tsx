@@ -1,6 +1,10 @@
-// New context file to manage order state across components
 import React from 'react';
+import { Card, CardBody, Button, Input, Textarea, Checkbox, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from '@heroui/react';
+import { motion } from 'framer-motion';
+import { Icon } from '@iconify/react';
+import { Badge } from '@heroui/react';
 
+// Order Context Types and Logic
 export interface OrderItem {
   id: string;
   name: string;
@@ -54,11 +58,15 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, []);
   
   const updateQuantity = React.useCallback((id: string, quantity: number) => {
-    setItems(prevItems => 
-      prevItems.map(item => 
-        item.id === id ? { ...item, quantity } : item
-      ).filter(item => item.quantity > 0)
-    );
+    if (quantity <= 0) {
+      setItems(prevItems => prevItems.filter(item => item.id !== id));
+    } else {
+      setItems(prevItems => 
+        prevItems.map(item => 
+          item.id === id ? { ...item, quantity } : item
+        )
+      );
+    }
   }, []);
   
   const clearOrder = React.useCallback(() => {
@@ -67,10 +75,15 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   
   // Calculate order totals
   const subtotal = React.useMemo(() => {
-    return items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    return items.reduce((sum, item) => {
+      return sum + (item.price * item.quantity);
+    }, 0);
   }, [items]);
   
-  const tax = React.useMemo(() => subtotal * 0.09, [subtotal]);
+  const tax = React.useMemo(() => {
+    return subtotal * 0.09;
+  }, [subtotal]);
+  
   const deliveryFee = orderType === 'delivery' ? 4.99 : 0;
   const total = subtotal + tax + deliveryFee;
   

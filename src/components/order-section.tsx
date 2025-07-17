@@ -1,10 +1,3 @@
-import React from 'react';
-import { Card, CardBody, Button, Input, Textarea, Checkbox, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from '@heroui/react';
-import { motion } from 'framer-motion';
-import { Icon } from '@iconify/react';
-import { useOrder, OrderItem } from './order-context';
-import { Badge } from '@heroui/react';
-
 // Order Section Component
 export const OrderSection: React.FC = () => {
   const { 
@@ -58,6 +51,8 @@ export const OrderSection: React.FC = () => {
     const newQuantity = item.quantity + change;
     if (newQuantity >= 1) {
       updateQuantity(item.id, newQuantity);
+    } else {
+      removeItem(item.id);
     }
   };
   

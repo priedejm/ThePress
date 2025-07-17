@@ -3,7 +3,6 @@ import { Card, CardBody, CardFooter, Button, Tabs, Tab } from '@heroui/react';
 import { motion } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import { useOrder } from './order-context';
-import { Toast, addToast } from '@heroui/react';
 
 interface BurritoOption {
   id: string;
@@ -81,14 +80,6 @@ export const Menu: React.FC = () => {
       name: burrito.name,
       price: burrito.price + (selectedProtein === 'Steak (+$2)' ? 2 : 0),
       options
-    });
-    
-    // Show toast notification
-    addToast({
-      title: "Added to Order",
-      description: `${burrito.name} has been added to your order.`,
-      color: "success",
-      timeout: 3000
     });
   };
 
